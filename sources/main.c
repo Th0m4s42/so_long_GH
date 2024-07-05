@@ -6,12 +6,11 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:27:05 by thbasse           #+#    #+#             */
-/*   Updated: 2024/07/02 14:47:00 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/07/05 15:42:14 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <mlx.h>
+#include <so_long.h>
 
 typedef struct	s_data
 {
@@ -41,7 +40,11 @@ int	main(void)
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	for (int i = 0 ; i < 1920 ; i++)
+	{
+		for (int y = 0 ; y < 1080 ; y++)
+			my_mlx_pixel_put(&img, i, y, (i + y));
+	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
