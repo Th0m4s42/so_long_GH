@@ -18,7 +18,7 @@ static void	ft_checkname(const char *str)
 	{
 		if (*str == '.')
 		{
-			if (ft_strncmp((const char *)str, ".ber\0", 5) != 0)
+			if (ft_strncmp((const char *)str, ".ber", 5) != 0)
 			{
 				ft_printf("ERROR: wrong format\n");
 				break;
