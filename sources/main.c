@@ -12,29 +12,22 @@
 
 #include <so_long.h>
 
-static void	ft_checkname(const char *str)
+static int	ft_checkname(const char *str)
 {
 	while (str)
 	{
 		if (*str == '.')
 		{
 			if (ft_strncmp((const char *)str, ".ber", 5) == 0)
-			{
-				break;
-			}
+				return (0);
 			else
-			{
-				ft_printf("ERROR: wrong format\n");
-				break;
-			}
+				return (22);
 		}
 		else if (*str == '\0')
-		{
-			ft_printf("ERROR: wrong format\n");
-			break;
-		}
+			return(22);
 		str++;
 	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -44,7 +37,10 @@ int	main(int argc, char **argv)
 	else if (open(argv[1], O_RDONLY) == -1)
 		ft_printf("ERROR: file not found\n");
 	else if (open(argv[1], O_RDONLY) != -1)
-		ft_checkname((const char *)argv[1]);
-	else			
-		ft_printf("TOUT EST BON\n");
+	{
+		if (ft_checkname((const char *)argv[1]) == 22)
+			ft_printf("ERROR: wrong format\n");
+		else
+			ft_printf("TOUT EST BON POUR L'INSTANT\n");
+	}
 }
