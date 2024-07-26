@@ -19,7 +19,14 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
+# include "../libft/includes/ft_printf.h"
 
-int	main(void);
+////////////STRUCTURES/////////////////////////////////////////////////////////
+
+
+
+////////////FONCTIONS//////////////////////////////////////////////////////////
+
+int	main(int argc, char **argv);
 
 #endif
