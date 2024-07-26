@@ -28,6 +28,11 @@ static void	ft_checkname(const char *str)
 				break;
 			}
 		}
+		else if (*str == '\0')
+		{
+			ft_printf("ERROR: wrong format\n");
+			break;
+		}
 		str++;
 	}
 }
@@ -40,6 +45,6 @@ int	main(int argc, char **argv)
 		ft_printf("ERROR: file not found\n");
 	else if (open(argv[1], O_RDONLY) != -1)
 		ft_checkname((const char *)argv[1]);
-	else
+	else			
 		ft_printf("TOUT EST BON\n");
 }
