@@ -26,7 +26,7 @@
 typedef struct  s_map
 {
     char    *name;
-    char    **contain;
+    char    *addr;
 }               t_map;
 
 ////////////FONCTIONS//////////////////////////////////////////////////////////

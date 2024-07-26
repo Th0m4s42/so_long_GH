@@ -32,6 +32,11 @@ static int	ft_checkname(const char *str)
 
 int	main(int argc, char **argv)
 {
+	// char **contain;
+	// int		i;
+
+	// contain = NULL;
+	// i = 0;
 	if (argc != 2)
 		ft_printf("ERROR: wrong argument(s)\n");
 	else if (open(argv[1], O_RDONLY) == -1)
@@ -41,6 +46,10 @@ int	main(int argc, char **argv)
 		if (ft_checkname((const char *)argv[1]) == 22)
 			ft_printf("ERROR: wrong format\n");
 		else
+		{
+			// while (get_next_line(open(argv[1],O_RDONLY) != '\0'))
+			// 	contain[i++] = get_next_line(open(argv[1],O_RDONLY));
 			ft_printf("TOUT EST BON POUR L'INSTANT\n");
+		}
 	}
 }
