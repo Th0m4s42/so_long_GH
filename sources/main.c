@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	}
 	else if (open(argv[1], O_RDONLY) == -1)
 	{
+		ft_printf("%s\n", argv[1]);
 		ft_printf("ERROR\n");
 	}
 	else
