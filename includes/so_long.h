@@ -6,12 +6,13 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/07/29 12:07:44 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/07/29 15:29:46 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# define BUFFER_SIZE 1024
 
 # include <stdbool.h>
 # include <limits.h>
@@ -40,5 +41,9 @@ int		main(int argc, char **argv);
 ////////////ERROR//////////////////////////////////////////////////////////////
 
 void	check_error(int argc, char **argv);
+
+////////////UTILS//////////////////////////////////////////////////////////////
+
+int	init_map(t_map *map, char **argv);
 
 #endif

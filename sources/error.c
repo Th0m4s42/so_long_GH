@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/07/29 12:04:22 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/07/29 15:13:33 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ static int	ft_checkname(const char *str)
 
 void	check_error(int argc, char **argv)
 {
+	t_map	*map;
+
+	map = NULL;
 	if (argc != 2)
 		ft_printf("ERROR: wrong argument(s)\n");
 	else if (open(argv[1], O_RDONLY) == -1)
@@ -42,6 +45,7 @@ void	check_error(int argc, char **argv)
 			ft_printf("ERROR: wrong format\n");
 		else
 		{
+			init_map(map, argv);
 			ft_printf("TOUT EST BON POUR L'INSTANT\n");
 		}
 	}
