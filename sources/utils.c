@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/07/29 16:18:41 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/07/29 17:44:03 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,11 @@ int	init_map(t_map *map, char **argv)
 		i++;
 	}
 	return (14);
+}
+
+void	*ft_realloc(void *ptr, size_t size)
+{
+	ptr = (void *)malloc(size * sizeof (void));
+	if (ptr == NULL)
+		return ;
 }
