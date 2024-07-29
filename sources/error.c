@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/07/27 13:46:01 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/07/29 12:04:22 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ static int	ft_checkname(const char *str)
 				return (22);
 		}
 		else if (*str == '\0')
-			return(22);
+			return (22);
 		str++;
 	}
 	return (0);
 }
 
-void    check_error(int argc, char **argv)
+void	check_error(int argc, char **argv)
 {
 	if (argc != 2)
 		ft_printf("ERROR: wrong argument(s)\n");
@@ -46,4 +46,3 @@ void    check_error(int argc, char **argv)
 		}
 	}
 }
-

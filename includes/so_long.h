@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/07/27 13:47:16 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/07/29 12:07:44 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,22 @@
 
 ////////////STRUCTURES/////////////////////////////////////////////////////////
 
-typedef struct  s_map
+typedef struct 	s_map
 {
-    char    *name;
-    char    *addr;
-}               t_map;
+	char	**content;
+	bool	P;
+	bool	C;
+	bool	E;
+	bool	W;
+	bool	G;
+}				t_map;
 
 ////////////FONCTIONS//////////////////////////////////////////////////////////
 
-int     main(int argc, char **argv);
+int		main(int argc, char **argv);
 
 ////////////ERROR//////////////////////////////////////////////////////////////
 
-void    check_error(int argc, char **argv);
+void	check_error(int argc, char **argv);
 
 #endif
