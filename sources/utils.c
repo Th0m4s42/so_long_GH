@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/07/29 17:44:03 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/07/30 08:19:54 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	*ft_realloc(void *ptr, size_t size)
 {
 	ptr = (void *)malloc(size * sizeof (void));
 	if (ptr == NULL)
-		return ;
+		return (NULL);
 }
