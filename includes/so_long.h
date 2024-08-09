@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/07/29 15:29:46 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/09 16:26:47 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 typedef struct 	s_map
 {
 	char	**content;
+	int		line;
+	int		column;
 	bool	P;
 	bool	C;
 	bool	E;
@@ -44,6 +46,6 @@ void	check_error(int argc, char **argv);
 
 ////////////UTILS//////////////////////////////////////////////////////////////
 
-int	init_map(t_map *map, char **argv);
+int		init_map(t_map *map, char **argv);
 
 #endif
