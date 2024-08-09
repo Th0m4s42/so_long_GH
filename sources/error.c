@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/07/29 15:13:33 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/09 17:37:02 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,18 @@ static int	ft_checkname(const char *str)
 	return (0);
 }
 
-void	check_error(int argc, char **argv)
+void	check_error(int argc, char **argv, t_map *map)
 {
-	t_map	*map;
+	int		fd;
 
-	map = NULL;
+	fd = open(argv[1], O_RDONLY);
 	if (argc != 2)
 		ft_printf("ERROR: wrong argument(s)\n");
-	else if (open(argv[1], O_RDONLY) == -1)
+	else if (fd == -1)
 		ft_printf("ERROR: file not found\n");
-	else if (open(argv[1], O_RDONLY) != -1)
+	else
 	{
+		close(fd);
 		if (ft_checkname((const char *)argv[1]) == 22)
 			ft_printf("ERROR: wrong format\n");
 		else
