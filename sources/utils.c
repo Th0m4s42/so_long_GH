@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/09 17:49:51 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/09 17:58:07 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,9 @@ int	init_map(t_map *map, char **argv)
 
 	map->line = 0;
 	map->column = 0;
-	map->P = false;
-	map->C = false;
-	map->E = false;
-	map->W = false;
-	map->G = false;
+	map->P = 0;
+	map->C = 0;
+	map->E = 0;
 	i = 0;
 	fd = open(argv[1], O_RDONLY);
 	lines = count_lines(&argv[1]);

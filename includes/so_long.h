@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/09 17:37:43 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/09 17:57:47 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ typedef struct 	s_map
 	char	**content;
 	int		line;
 	int		column;
-	bool	P;
-	bool	C;
-	bool	E;
-	bool	W;
-	bool	G;
+	int		P;
+	int		C;
+	int		E;
 }				t_map;
 
 ////////////FONCTIONS//////////////////////////////////////////////////////////
