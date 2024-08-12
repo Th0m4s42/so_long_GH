@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/12 17:35:51 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/12 17:48:29 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void check_map_contain(t_map *map)
 {
 	int	h;
 	int	w;
-	int	error_code;
 
 	h = 0;
 	w = 0;
@@ -66,6 +65,32 @@ void check_map_contain(t_map *map)
 	}
 }
 
+int	check_map_unexpexted_contain(t_map *map)
+{
+	int	h;
+	int	w;
+	int	error_code;
+
+	h = 0;
+	w = 0;
+	error_code = 0;
+	while(map->content[h])
+	{
+		while (map->content[h][w])
+		{
+			if (map->content[h][w] != 'P' ||
+					map->content[h][w] != 'E' ||
+					map->content[h][w] != 'C' ||
+					map->content[h][w] != '1' ||
+					map->content[h][w] != '0')
+				error_code = 414;
+			w++;
+		}
+		h++;
+	}
+	return (error_code);
+}
+
 int	check_game_item(t_map *map)
 {
 	int	error_code;
@@ -82,6 +107,8 @@ int	check_game_item(t_map *map)
 		error_code = 411;
 	else if (map->C == 0)
 		error_code = 412;
+	else if (error_code == 0)
+		error_code = check_map_unexpexted_contain(map);
 	return (error_code);
 }
 

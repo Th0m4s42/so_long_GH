@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/12 14:56:34 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/12 18:07:38 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int		main(int argc, char **argv);
 ////////////ERROR//////////////////////////////////////////////////////////////
 
 int		check_error(int argc, char **argv, t_map *map);
+int		check_game_item(t_map *map);
+int		get_error_code(int argc, char **argv, t_map *map);
+int		print_error(int error_code);
 
 ////////////UTILS//////////////////////////////////////////////////////////////
 

@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/12 15:47:37 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/12 18:14:13 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_error(int argc, char **argv, t_map *map)
 	return (error_code);
 }
 
-int get_error_code(int argc, char **argv, t_map *map)
+int	get_error_code(int argc, char **argv, t_map *map)
 {
 	int	error_code;
 	int fd;
@@ -57,16 +57,15 @@ int get_error_code(int argc, char **argv, t_map *map)
 		close(fd);
 		if (ft_checkname((const char *)argv[1]) == 22)
 			error_code = 406;
-		else
-		{
+		else if (error_code == 0)
 			error_code = check_map(map, argv);
-			ft_printf("TOUT EST BON POUR L'INSTANT\n");
-		}
+		else
+			error_code = check_game_item(map);
 	}
 	return (error_code);
 }
 
-void	print_error(int error_code)
+int	print_error(int error_code)
 {
 	if (error_code == 300)
 		ft_printf("ERROR_INVALID_PARAMETER\n");
@@ -92,4 +91,5 @@ void	print_error(int error_code)
 		ft_printf("ERROR_WALL_MISSING\n");
 	else if (error_code == 414)
 		ft_printf("ERROR_UNEXPECTED_ELEMENT\n");
+	return (0);
 }
