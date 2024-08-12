@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/12 18:19:23 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/12 18:46:41 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	ft_checkname(const char *str)
 
 int	check_error(int argc, char **argv, t_map *map)
 {
+
 	int		error_code;
 
 	error_code = 0;
@@ -56,9 +57,9 @@ int	get_error_code(int argc, char **argv, t_map *map)
 		close(fd);
 		if (ft_checkname((const char *)argv[1]) == 22)
 			error_code = 406;
-		else if (error_code == 0)
+		if (error_code == 0)
 			error_code = check_map(map, argv);
-		else
+		if (error_code == 0)
 			error_code = check_game_item(map);
 	}
 	return (error_code);
