@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/12 18:07:38 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/12 18:20:18 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int		print_error(int error_code);
 ////////////UTILS//////////////////////////////////////////////////////////////
 
 int		check_map(t_map *map, char **argv);
+void	init_map(t_map *map);
 
 #endif
