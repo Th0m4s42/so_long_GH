@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/09 17:57:47 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/12 14:56:34 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int		main(int argc, char **argv);
 
 ////////////ERROR//////////////////////////////////////////////////////////////
 
-void	check_error(int argc, char **argv, t_map *map);
+int		check_error(int argc, char **argv, t_map *map);
 
 ////////////UTILS//////////////////////////////////////////////////////////////
 
-int		init_map(t_map *map, char **argv);
+int		check_map(t_map *map, char **argv);
 
 #endif

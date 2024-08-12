@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/09 17:37:02 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/12 15:47:37 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,66 @@ static int	ft_checkname(const char *str)
 	return (0);
 }
 
-void	check_error(int argc, char **argv, t_map *map)
+int	check_error(int argc, char **argv, t_map *map)
 {
 	int		fd;
+	int		error_code;
 
+	error_code = 0;
+	error_code = get_error_code(argc, argv, map);
+	print_error(error_code);
+	return (error_code);
+}
+
+int get_error_code(int argc, char **argv, t_map *map)
+{
+	int	error_code;
+	int fd;
+
+	error_code = 0;
 	fd = open(argv[1], O_RDONLY);
 	if (argc != 2)
-		ft_printf("ERROR: wrong argument(s)\n");
+		error_code = 300;
 	else if (fd == -1)
-		ft_printf("ERROR: file not found\n");
+		error_code = 404;
 	else
 	{
 		close(fd);
 		if (ft_checkname((const char *)argv[1]) == 22)
-			ft_printf("ERROR: wrong format\n");
+			error_code = 406;
 		else
 		{
-			init_map(map, argv);
+			error_code = check_map(map, argv);
 			ft_printf("TOUT EST BON POUR L'INSTANT\n");
 		}
 	}
+	return (error_code);
+}
+
+void	print_error(int error_code)
+{
+	if (error_code == 300)
+		ft_printf("ERROR_INVALID_PARAMETER\n");
+	else if (error_code == 404)
+		ft_printf("ERROR_UNWINNABLE\n");
+	else if (error_code == 415)
+		ft_printf("ERROR_FILE_NOT_FOUND\n");
+	else if (error_code == 406)
+		ft_printf("ERROR_FORMAT_FILE\n");
+	else if (error_code == 407)
+		ft_printf("ERROR_WRONG_SHAPE_OF_MAP\n");
+	else if (error_code == 408)
+		ft_printf("ERROR_NO_PLAYER\n");
+	else if (error_code == 409)
+		ft_printf("ERROR_TOO_MUCH_PLAYER\n");
+	else if (error_code == 410)
+		ft_printf("ERROR_NO_EXIT\n");
+	else if (error_code == 411)
+		ft_printf("ERROR_TOO_MUCH EXIT\n");
+	else if (error_code == 412)
+		ft_printf("ERROR_NO_COLLECTIBLE\n");
+	else if (error_code == 413)
+		ft_printf("ERROR_WALL_MISSING\n");
+	else if (error_code == 414)
+		ft_printf("ERROR_UNEXPECTED_ELEMENT\n");
 }
