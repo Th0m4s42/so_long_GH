@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/12 15:10:00 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/12 17:35:51 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,48 @@ int count_lines(char **map)
 	verifier contenu
 	verifier possibiliter de finir le jeu
 	*/
+void check_map_contain(t_map *map)
+{
+	int	h;
+	int	w;
+	int	error_code;
+
+	h = 0;
+	w = 0;
+	while(map->content[h])
+	{
+		while (map->content[h][w])
+		{
+			if (map->content[h][w] == 'P')
+				map->P += 1;
+			else if (map->content[h][w] == 'E')
+				map->E += 1;
+			else if (map->content[h][w] == 'C')
+				map->C += 1;
+			w++;
+		}
+		h++;
+	}
+}
+
+int	check_game_item(t_map *map)
+{
+	int	error_code;
+
+	error_code = 0;
+	check_map_contain(map);
+	if (map->P == 0)
+		error_code = 408;
+	else if (map->P > 1)
+		error_code = 409;
+	else if (map->E == 0)
+		error_code = 410;
+	else if (map->E > 1)
+		error_code = 411;
+	else if (map->C == 0)
+		error_code = 412;
+	return (error_code);
+}
 
 int	ft_compare_line(t_map *map, int lines)
 {
