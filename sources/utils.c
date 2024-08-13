@@ -6,13 +6,13 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/12 18:43:59 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/13 09:09:16 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-int count_lines(char **map)
+int	count_lines(char **map)
 {
 	int		fd;
 	int		nb;
@@ -25,7 +25,7 @@ int count_lines(char **map)
 		perror(*map);
 		return (-1);
 	}
-	while(1)
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
@@ -34,7 +34,7 @@ int count_lines(char **map)
 		nb++;
 	}
 	close(fd);
-	return(nb);
+	return (nb);
 }
 	/*
 	stocker ligne
@@ -42,14 +42,15 @@ int count_lines(char **map)
 	verifier contenu
 	verifier possibiliter de finir le jeu
 	*/
-void check_map_contain(t_map *map)
+
+void	check_map_contain(t_map *map)
 {
 	int	h;
 	int	w;
 
 	h = 0;
 	w = 0;
-	while(map->content[h])
+	while (map->content[h])
 	{
 		while (map->content[h][w])
 		{
@@ -74,7 +75,7 @@ int	check_map_unexpexted_contain(t_map *map)
 	h = 0;
 	w = 0;
 	error_code = 0;
-	while(map->content[h])
+	while (map->content[h])
 	{
 		while (map->content[h][w])
 		{
@@ -114,7 +115,7 @@ int	check_game_item(t_map *map)
 
 int	ft_compare_line(t_map *map, int lines)
 {
-	int error_code;
+	int	error_code;
 	int	i;
 
 	error_code = 0;
@@ -126,7 +127,7 @@ int	ft_compare_line(t_map *map, int lines)
 			error_code = 407;
 		i++;
 	}
-	return(error_code);
+	return (error_code);
 }
 
 int	check_map(t_map *map, char **argv)
@@ -157,7 +158,7 @@ int	check_map(t_map *map, char **argv)
 	return (error_code);
 }
 
-void init_map(t_map *map)
+void	init_map(t_map *map)
 {
 	map->content = NULL;
 	map->line = 0;
@@ -166,4 +167,3 @@ void init_map(t_map *map)
 	map->C = 0;
 	map->E = 0;
 }
-

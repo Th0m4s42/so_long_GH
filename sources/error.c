@@ -6,13 +6,13 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/12 18:46:41 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/13 09:09:43 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-static int	ft_checkname(const char *str)
+static	int	ft_checkname(const char *str)
 {
 	while (str)
 	{
@@ -32,7 +32,6 @@ static int	ft_checkname(const char *str)
 
 int	check_error(int argc, char **argv, t_map *map)
 {
-
 	int		error_code;
 
 	error_code = 0;
@@ -44,7 +43,7 @@ int	check_error(int argc, char **argv, t_map *map)
 int	get_error_code(int argc, char **argv, t_map *map)
 {
 	int	error_code;
-	int fd;
+	int	fd;
 
 	error_code = 0;
 	fd = open(argv[1], O_RDONLY);
