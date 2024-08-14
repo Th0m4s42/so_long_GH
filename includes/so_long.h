@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 15:03:52 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/14 15:32:11 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int		print_error(int error_code);
 
 void	init_map(t_map *map);
 int		count_lines(char **map);
+void	free_tab(char **tab);
 
 #endif

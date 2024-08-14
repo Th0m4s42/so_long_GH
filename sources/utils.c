@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 14:45:06 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/14 15:33:23 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_map(t_map *map)
 	map->E = 0;
 }
 
-int	count_lines(char **map)
+int		count_lines(char **map)
 {
 	int		fd;
 	int		nb;
@@ -45,6 +45,19 @@ int	count_lines(char **map)
 	}
 	close(fd);
 	return (nb);
+}
+
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }
 	/*
 	stocker ligne
