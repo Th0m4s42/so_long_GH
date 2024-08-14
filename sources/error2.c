@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:23:59 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 14:44:51 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/14 15:03:34 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_compare_line(t_map *map, int lines)
 	return (error_code);
 }
 
-int	check_game_item(t_map *map)
+int     check_game_item(t_map *map)
 {
 	int	error_code;
 

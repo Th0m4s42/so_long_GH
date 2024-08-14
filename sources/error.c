@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 14:27:11 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/14 15:01:19 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	get_error_code(int argc, char **argv, t_map *map)
 	}
 	return (error_code);
 }
-static	int	ft_checkname(const char *str)
+int	ft_checkname(const char *str)
 {
 	while (str)
 	{
