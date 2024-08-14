@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:23:59 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 17:43:26 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/14 17:47:53 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,10 @@ int	check_map_unexpexted_contain(t_map *map)
 		w = 0;
 		while (map->content[h][w])
 		{
-			if ((map->content[h][w] != 'P' || map->content[h][w] != 'E' ||
-				map->content[h][w] != 'C' || map->content[h][w] != '1' ||
-				map->content[h][w] != '0') && map->content[h][w])
+			if (map->content[h][w] != 'P' && map->content[h][w] != 'E' &&
+				map->content[h][w] != 'C' && map->content[h][w] != '1' &&
+				map->content[h][w] != '0' && map->content[h][w] != '\n' &&
+				map->content[h][w])
 				{
 				error_code = 414;
 				}
