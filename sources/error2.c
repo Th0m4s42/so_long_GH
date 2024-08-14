@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:23:59 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 15:03:34 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/14 16:01:06 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void	check_map_contain(t_map *map)
 
 	h = 0;
 	w = 0;
-	while (map->content[h])
+	while (map->content[h] != NULL)
 	{
-		while (map->content[h][w])
+		while (map->content[h][w] != '\n')
 		{
 			if (map->content[h][w] == 'P')
 				map->P += 1;
