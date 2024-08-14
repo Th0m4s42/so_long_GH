@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:23:59 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 16:01:06 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/14 16:50:30 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int     check_game_item(t_map *map)
 
 	error_code = 0;
 	check_map_contain(map);
+    printf("valeur de P: %d\n", map->P);
 	if (map->P == 0)
 		error_code = 408;
 	else if (map->P > 1)
@@ -84,17 +85,17 @@ void	check_map_contain(t_map *map)
 	int	w;
 
 	h = 0;
-	w = 0;
-	while (map->content[h] != NULL)
+	while (map->content[h])
 	{
-		while (map->content[h][w] != '\n')
+        w = 0; 
+		while (map->content[h][w])
 		{
 			if (map->content[h][w] == 'P')
-				map->P += 1;
+				map->P++;
 			else if (map->content[h][w] == 'E')
-				map->E += 1;
+				map->E++;
 			else if (map->content[h][w] == 'C')
-				map->C += 1;
+				map->C++;
 			w++;
 		}
 		h++;
@@ -108,18 +109,21 @@ int	check_map_unexpexted_contain(t_map *map)
 	int	error_code;
 
 	h = 0;
-	w = 0;
 	error_code = 0;
 	while (map->content[h])
 	{
+        w = 0;
 		while (map->content[h][w])
 		{
 			if (map->content[h][w] != 'P' ||
 					map->content[h][w] != 'E' ||
 					map->content[h][w] != 'C' ||
 					map->content[h][w] != '1' ||
-					map->content[h][w] != '0')
+					map->content[h][w] != '0' ||
+                    map->content[h][w] != '\n'||
+                    map->content[h][w] != '\0')
 				error_code = 414;
+                printf("%c", map->content[h][w]);
 			w++;
 		}
 		h++;
