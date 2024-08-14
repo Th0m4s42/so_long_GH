@@ -22,6 +22,7 @@ OBJ_DIR := objs/
 SRCS := \
 	$(SRC_DIR)main.c \
 	$(SRC_DIR)error.c \
+	$(SRC_DIR)error2.c \
 	$(SRC_DIR)utils.c \
 
 LIBFT_DIR := libft/
