@@ -6,29 +6,11 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/13 09:09:43 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/14 14:27:11 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
-
-static	int	ft_checkname(const char *str)
-{
-	while (str)
-	{
-		if (*str == '.')
-		{
-			if (ft_strncmp((const char *)str, ".ber", 5) == 0)
-				return (0);
-			else
-				return (22);
-		}
-		else if (*str == '\0')
-			return (22);
-		str++;
-	}
-	return (0);
-}
 
 int	check_error(int argc, char **argv, t_map *map)
 {
@@ -62,6 +44,23 @@ int	get_error_code(int argc, char **argv, t_map *map)
 			error_code = check_game_item(map);
 	}
 	return (error_code);
+}
+static	int	ft_checkname(const char *str)
+{
+	while (str)
+	{
+		if (*str == '.')
+		{
+			if (ft_strncmp((const char *)str, ".ber", 5) == 0)
+				return (0);
+			else
+				return (22);
+		}
+		else if (*str == '\0')
+			return (22);
+		str++;
+	}
+	return (0);
 }
 
 int	print_error(int error_code)
