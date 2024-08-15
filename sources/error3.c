@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:38:21 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 20:06:10 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/15 09:59:55 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_boder(t_map *map)
 
 	error_code = 0;
 	w = 0;
-	while (map->content[0][w])
+	while (map->content[0][w] && map->content[0][w] != '\n')
 	{
 		if (map->content[0][w] != '1')
 			error_code = 413;
@@ -41,7 +41,7 @@ int	check_boder(t_map *map)
 	h = 0;
 	while(map->content[h])
 		h++;
-	while (map->content[h - 1][w] != '\n')
+	while (map->content[h - 1][w] && map->content[h - 1][w] != '\n')
 	{
 		if (map->content[h - 1][w] != '1')
 			error_code = 413;
@@ -58,17 +58,17 @@ int	check_side(t_map *map)
 
 	error_code = 0;
 	h = 0;
-	while (map->content[h][0])
+	while (map->content[h])
 	{
 		if (map->content[h][0] != '1')
 			error_code = 413;
 		h++;
 	}
 	h = 0;
-	w = ft_strlen(map->content[0]);
-	while (map->content[h][w - 1])
+	w = ft_strlen(map->content[0]) - 1;
+	while (map->content[h])
 	{
-		if (map->content[h - 1][w - 1] != '1')
+		if (map->content[h][w] != '1')
 			error_code = 413;
 		h++;
 	}
