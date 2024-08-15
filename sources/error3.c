@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:38:21 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/15 10:16:05 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/15 10:41:44 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int check_wall(t_map *map)
 {
 	int error_code;
 
-	error_code = check_boder(map);
+	error_code = check_border(map);
 	if (error_code != 0)
 		return error_code;
 	error_code = check_side(map);
 	return (error_code);
 }
 
-int	check_boder(t_map *map)
+int	check_border(t_map *map)
 {
 	int h;
 	int w;

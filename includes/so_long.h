@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 19:06:23 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/15 10:41:50 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	check_map_contain(t_map *map);
 int		check_map_unexpexted_contain(t_map *map);
 int		print_error(int error_code);
 int		check_wall(t_map *map);
-int		check_boder(t_map *map);
+int		check_border(t_map *map);
 int		check_side(t_map *map);
 
 ////////////UTILS//////////////////////////////////////////////////////////////
