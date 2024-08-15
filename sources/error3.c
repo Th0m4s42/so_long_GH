@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:38:21 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/15 10:41:44 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/15 11:26:02 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	check_side(t_map *map)
 		h++;
 	}
 	h = 0;
-	w = ft_strlen(map->content[0]) - 1;
+	w = ft_strlen(map->content[0]) - 2;
 	while (map->content[h])
 	{
 		if (map->content[h][w] != '1')
