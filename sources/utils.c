@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 14:52:52 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 15:12:21 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,17 @@ t_player	*create_player(t_player *player)
 	player->x = 0;
 	player->y = 0;
 	return (player);
+}
+
+void	free_visited(bool **visited, int height)
+{
+	int i;
+
+	i= 0;
+	while (i < height)
+	{
+		free(visited[i]);
+		i++;
+	}
+	free(visited);
 }

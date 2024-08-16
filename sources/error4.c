@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 14:55:03 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 15:14:49 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int		check_rechability(t_map *map)
 {
-	bool 		**visited = NULL;
+	bool 		**visited;
 	int			h;
 	int			w;
-	t_player	*pos = NULL;
+	t_player	*pos;
 
 	h = 0;
+	visited = malloc(sizeof(bool **));
+	pos = malloc(sizeof(t_player *));
 	pos = create_player(pos);
 	visited = init_visited(visited, map);
 	check_player_pos(map, pos);
@@ -37,7 +39,7 @@ int		check_rechability(t_map *map)
 		}
 		h++;
 	}
-	free_tab((char **)visited);
+	free_visited(visited, map->column);
 	free(pos);
 	return (0);
 }

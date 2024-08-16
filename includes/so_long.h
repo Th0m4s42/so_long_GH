@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 14:53:19 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 15:11:40 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void		init_map(t_map *map);
 int			count_lines(char **map);
 void		free_tab(char **tab);
 t_player	*create_player(t_player *player);
+void		free_visited(bool **visited, int height);
 
 #endif
