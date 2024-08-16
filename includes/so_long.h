@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/15 10:41:50 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 12:15:28 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ typedef struct 	s_map
 	int		E;
 }				t_map;
 
+typedef struct	s_player
+{
+	int	x;
+	int	y;
+}				t_player;
+
 ////////////FONCTIONS//////////////////////////////////////////////////////////
 
 int		main(int argc, char **argv);
@@ -52,6 +58,11 @@ int		print_error(int error_code);
 int		check_wall(t_map *map);
 int		check_border(t_map *map);
 int		check_side(t_map *map);
+int		check_rechability(t_map *map, t_player *pos);
+void	check_player_pos(t_map *map, t_player *pos);
+bool	**init_visited(bool **visited, t_map *map);
+void	depth_first_search(char **map, int h, int w, int max_h, int max_w,
+		bool **visited);
 
 ////////////UTILS//////////////////////////////////////////////////////////////
 
