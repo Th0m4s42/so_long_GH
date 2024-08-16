@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 18:47:03 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 18:59:35 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ int		check_rechability(t_map *map)
 	t_player	*pos;
 
 	h = 0;
-	visited = init_visited(map);
 	pos = check_player_pos(map);
+	if (pos == NULL)
+		return (-1);
+	visited = init_visited(map);
+	if (visited == NULL)
+		return (-1);
 	depth_first_search(map->content, pos->y, pos->x, map->column, map->line,
 	visited);
 	while(h < map->column)
@@ -53,6 +57,8 @@ t_player	*check_player_pos(t_map *map)
 
 	h = 0;
 	pos = create_player(0, 0);
+	if (pos == NULL)
+		return (NULL);
 	while (map->content[h])
 	{
 		w = 0; 
@@ -68,6 +74,7 @@ t_player	*check_player_pos(t_map *map)
 		}
 		h++;
 	}
+	free (pos);
 	return (NULL);
 }
 
@@ -83,13 +90,13 @@ bool	**init_visited(t_map *map)
 		return (NULL);
 	while (h < map->column)
 	{
-		w = 0;
 		visited[h] = malloc(sizeof(bool) * map->line);
 		if (visited[h] == NULL)
 		{
-			free_visited(visited, map->column);
+			free_visited(visited, h);
 			return (NULL);
 		}
+		w = 0;
 		while (w < map->line)
 		{
 			visited[h][w] = false;
