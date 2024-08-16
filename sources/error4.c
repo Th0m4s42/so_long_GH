@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 13:30:14 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 14:04:12 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		check_rechability(t_map *map)
 		h++;
 	}
 	free_tab((char **)visited);
+	free(pos);
 	return (0);
 }
 
@@ -47,15 +48,15 @@ void	check_player_pos(t_map *map, t_player *pos)
 	int	w;
 
 	h = 0;
-	while (map->content[h - 1])
+	while (map->content[h - 2])
 	{
 		w = 0; 
-		while (map->content[h][w - 1])
+		while (map->content[h][w - 2])
 		{
 			if (map->content[h][w] == 'P')
 			{
-				h = pos->y;
-				w = pos->x;
+				pos->y = h;
+				pos->x = w;
 			}
 			w++;
 		}
@@ -69,15 +70,18 @@ bool	**init_visited(bool **visited, t_map *map)
 	int	w;
 
 	h = 0;
-	visited = malloc(sizeof (bool *) * map->column + 1);
+	visited = malloc(sizeof (bool *) * map->column);
 	if (visited == NULL)
 		return (NULL);
 	while (h < map->column)
 	{
 		w = 0;
-		visited[h] = malloc(sizeof (bool *) * map->line + 1);
+		visited[h] = malloc(sizeof (bool *) * map->line);
 		if (visited[h] == NULL)
+		{
+			free_tab((char **)visited);
 			return (NULL);
+		}
 		while (w < map->line)
 		{
 			visited[h][w] = false;
