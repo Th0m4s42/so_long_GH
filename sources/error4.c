@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 14:04:12 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 14:55:03 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int		check_rechability(t_map *map)
 	bool 		**visited = NULL;
 	int			h;
 	int			w;
-	t_player	*pos;
+	t_player	*pos = NULL;
 
 	h = 0;
-	pos = malloc(sizeof(t_player));
+	pos = create_player(pos);
 	visited = init_visited(visited, map);
 	check_player_pos(map, pos);
 	depth_first_search(map->content, pos->y, pos->x, map->column, map->line,
@@ -48,10 +48,10 @@ void	check_player_pos(t_map *map, t_player *pos)
 	int	w;
 
 	h = 0;
-	while (map->content[h - 2])
+	while (map->content[h])
 	{
 		w = 0; 
-		while (map->content[h][w - 2])
+		while (map->content[h][w])
 		{
 			if (map->content[h][w] == 'P')
 			{

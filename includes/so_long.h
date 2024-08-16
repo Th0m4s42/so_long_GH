@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 12:49:53 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 14:53:19 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ void	depth_first_search(char **map, int h, int w, int max_h, int max_w,
 
 ////////////UTILS//////////////////////////////////////////////////////////////
 
-void	init_map(t_map *map);
-int		count_lines(char **map);
-void	free_tab(char **tab);
+void		init_map(t_map *map);
+int			count_lines(char **map);
+void		free_tab(char **tab);
+t_player	*create_player(t_player *player);
 
 #endif

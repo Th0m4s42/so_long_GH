@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 15:33:23 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 14:52:52 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,13 @@ void	free_tab(char **tab)
 	}
 	free(tab);
 }
-	/*
-	stocker ligne
-	comparer longueur
-	verifier contenu
-	verifier possibiliter de finir le jeu
-	*/
+
+t_player	*create_player(t_player *player)
+{
+	player = malloc(sizeof(t_player));
+	if (player == NULL)
+		return (NULL);
+	player->x = 0;
+	player->y = 0;
+	return (player);
+}
