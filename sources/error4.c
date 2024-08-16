@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 15:36:43 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 18:47:03 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ int		check_rechability(t_map *map)
 		{
 			if ((map->content[h][w] == 'C' || map->content[h][w] == 'E') &&
 				!visited[h][w])
+			{
+				free_visited(visited, map->column);
+				free(pos);
 				return (415);
+			}
 			w++;
 		}
 		h++;
@@ -80,10 +84,10 @@ bool	**init_visited(t_map *map)
 	while (h < map->column)
 	{
 		w = 0;
-		visited[h] = malloc(sizeof (bool *) * map->line);
+		visited[h] = malloc(sizeof(bool) * map->line);
 		if (visited[h] == NULL)
 		{
-			free_tab((char **)visited);
+			free_visited(visited, map->column);
 			return (NULL);
 		}
 		while (w < map->line)
