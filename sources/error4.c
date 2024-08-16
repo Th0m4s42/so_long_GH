@@ -6,19 +6,21 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 12:19:28 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 13:30:14 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-int		check_rechability(t_map *map, t_player *pos)
+int		check_rechability(t_map *map)
 {
-	bool 	**visited = NULL;
-	int		h;
-	int		w;
+	bool 		**visited = NULL;
+	int			h;
+	int			w;
+	t_player	*pos;
 
 	h = 0;
+	pos = malloc(sizeof(t_player));
 	visited = init_visited(visited, map);
 	check_player_pos(map, pos);
 	depth_first_search(map->content, pos->y, pos->x, map->column, map->line,
@@ -45,10 +47,10 @@ void	check_player_pos(t_map *map, t_player *pos)
 	int	w;
 
 	h = 0;
-	while (map->content[h])
+	while (map->content[h - 1])
 	{
 		w = 0; 
-		while (map->content[h][w])
+		while (map->content[h][w - 1])
 		{
 			if (map->content[h][w] == 'P')
 			{
@@ -67,11 +69,15 @@ bool	**init_visited(bool **visited, t_map *map)
 	int	w;
 
 	h = 0;
-	visited = malloc(sizeof (bool *) * map->column);
+	visited = malloc(sizeof (bool *) * map->column + 1);
+	if (visited == NULL)
+		return (NULL);
 	while (h < map->column)
 	{
 		w = 0;
-		visited[h] = malloc(sizeof (bool *) * map->line);
+		visited[h] = malloc(sizeof (bool *) * map->line + 1);
+		if (visited[h] == NULL)
+			return (NULL);
 		while (w < map->line)
 		{
 			visited[h][w] = false;

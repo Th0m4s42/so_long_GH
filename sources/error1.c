@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/14 19:07:36 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 12:45:36 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	get_error_code(int argc, char **argv, t_map *map)
 			error_code = check_game_item(map);
 		if (error_code == 0)
 			error_code = check_wall(map);
+		if (error_code == 0)
+			error_code = check_rechability(map);
 	}
 	return (error_code);
 }
