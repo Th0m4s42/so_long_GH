@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 12:45:36 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 19:32:38 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ int	print_error(int error_code)
 {
 	if (error_code == 300)
 		ft_printf("ERROR_INVALID_PARAMETER\n");
-	else if (error_code == 404)
-		ft_printf("ERROR_UNWINNABLE\n");
 	else if (error_code == 415)
+		ft_printf("ERROR_UNWINNABLE\n");
+	else if (error_code == 405)
 		ft_printf("ERROR_FILE_NOT_FOUND\n");
 	else if (error_code == 406)
 		ft_printf("ERROR_FORMAT_FILE\n");

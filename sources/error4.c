@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 18:59:35 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 19:59:55 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,30 @@ int		check_rechability(t_map *map)
 		return (-1);
 	visited = init_visited(map);
 	if (visited == NULL)
-		return (-1);
-	depth_first_search(map->content, pos->y, pos->x, map->column, map->line,
+	{
+		free (pos);
+		return (-2);
+	}
+	map->column = (ft_strlen(map->content[0]) - 2);
+	depth_first_search(map->content, pos->y, pos->x, map->line, map->column,
 	visited);
-	while(h < map->column)
+	while(h < map->line)
 	{
 		w = 0;
-		while (w < map->line)
+		while (w < map->column)
 		{
 			if ((map->content[h][w] == 'C' || map->content[h][w] == 'E') &&
 				!visited[h][w])
 			{
-				free_visited(visited, map->column);
+				free_visited(visited, map->line);
 				free(pos);
-				return (415);
+				return (404);
 			}
 			w++;
 		}
 		h++;
 	}
-	free_visited(visited, map->column);
+	free_visited(visited, map->line);
 	free(pos);
 	return (0);
 }
@@ -85,19 +89,19 @@ bool	**init_visited(t_map *map)
 	bool	**visited;
 
 	h = 0;
-	visited = malloc(sizeof (bool *) * map->column);
+	visited = malloc(sizeof (bool *) * map->line);
 	if (visited == NULL)
 		return (NULL);
-	while (h < map->column)
+	while (h < map->line)
 	{
-		visited[h] = malloc(sizeof(bool) * map->line);
+		visited[h] = malloc(sizeof(bool) * map->column);
 		if (visited[h] == NULL)
 		{
 			free_visited(visited, h);
 			return (NULL);
 		}
 		w = 0;
-		while (w < map->line)
+		while (w < map->column)
 		{
 			visited[h][w] = false;
 			w++;
