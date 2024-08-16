@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 15:14:49 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 15:36:43 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@ int		check_rechability(t_map *map)
 	t_player	*pos;
 
 	h = 0;
-	visited = malloc(sizeof(bool **));
-	pos = malloc(sizeof(t_player *));
-	pos = create_player(pos);
-	visited = init_visited(visited, map);
-	check_player_pos(map, pos);
+	visited = init_visited(map);
+	pos = check_player_pos(map);
 	depth_first_search(map->content, pos->y, pos->x, map->column, map->line,
 	visited);
 	while(h < map->column)
@@ -44,12 +41,14 @@ int		check_rechability(t_map *map)
 	return (0);
 }
 
-void	check_player_pos(t_map *map, t_player *pos)
+t_player	*check_player_pos(t_map *map)
 {
-	int	h;
-	int	w;
+	int			h;
+	int			w;
+	t_player	*pos;
 
 	h = 0;
+	pos = create_player(0, 0);
 	while (map->content[h])
 	{
 		w = 0; 
@@ -59,17 +58,20 @@ void	check_player_pos(t_map *map, t_player *pos)
 			{
 				pos->y = h;
 				pos->x = w;
+				return (pos);
 			}
 			w++;
 		}
 		h++;
 	}
+	return (NULL);
 }
 
-bool	**init_visited(bool **visited, t_map *map)
+bool	**init_visited(t_map *map)
 {
-	int	h;
-	int	w;
+	int		h;
+	int		w;
+	bool	**visited;
 
 	h = 0;
 	visited = malloc(sizeof (bool *) * map->column);

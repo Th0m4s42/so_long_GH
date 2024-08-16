@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 15:11:40 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 15:31:57 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int		check_wall(t_map *map);
 int		check_border(t_map *map);
 int		check_side(t_map *map);
 int		check_rechability(t_map *map);
-void	check_player_pos(t_map *map, t_player *pos);
-bool	**init_visited(bool **visited, t_map *map);
+t_player	*check_player_pos(t_map *map);
+bool	**init_visited(t_map *map);
 void	depth_first_search(char **map, int h, int w, int max_h, int max_w,
 		bool **visited);
 
@@ -69,7 +69,7 @@ void	depth_first_search(char **map, int h, int w, int max_h, int max_w,
 void		init_map(t_map *map);
 int			count_lines(char **map);
 void		free_tab(char **tab);
-t_player	*create_player(t_player *player);
+t_player	*create_player(int x, int y);
 void		free_visited(bool **visited, int height);
 
 #endif

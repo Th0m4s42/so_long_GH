@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 15:12:21 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/16 15:35:17 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,15 @@ void	free_tab(char **tab)
 	free(tab);
 }
 
-t_player	*create_player(t_player *player)
+t_player	*create_player(int x, int y)
 {
+	t_player	*player;
+
 	player = malloc(sizeof(t_player));
 	if (player == NULL)
 		return (NULL);
-	player->x = 0;
-	player->y = 0;
+	player->x = x;
+	player->y = y;
 	return (player);
 }
 
