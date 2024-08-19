@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/19 11:40:52 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/19 11:59:36 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 int		check_rechability(t_map *map)
 {
 	bool 		**visited;
-	int			h;
-	int			w;
 	t_player	*pos;
 
-	h = 0;
 	pos = check_player_pos(map);
 	if (pos == NULL)
 		return (-1);
-	map->column = (ft_strlen(map->content[0]));
 	visited = init_visited(map);
 	if (visited == NULL)
 	{
@@ -32,21 +28,10 @@ int		check_rechability(t_map *map)
 	}
 	depth_first_search(map->content, pos->y, pos->x, map->line, map->column,
 	visited);
-	while(h < map->line)
+	if (check_visited(map, visited) == 415)
 	{
-		w = 0;
-		while (w < map->column)
-		{
-			if ((map->content[h][w] == 'C' || map->content[h][w] == 'E') &&
-				!visited[h][w] == 0)
-			{
-				free_visited(visited, map->line);
-				free(pos);
-				return (415);
-			}
-			w++;
-		}
-		h++;
+		free(pos);
+		return (415);
 	}
 	free_visited(visited, map->line);
 	return (0);
@@ -122,4 +107,28 @@ bool **visited)
 	depth_first_search(map, h + 1, w, max_h, max_w, visited);
 	depth_first_search(map, h, w - 1, max_h, max_w, visited);
 	depth_first_search(map, h, w + 1, max_h, max_w, visited);
+}
+
+int	check_visited(t_map *map, bool **visited)
+{
+	int	h;
+	int	w;
+
+	h = 0;
+		while(h < map->line)
+	{
+		w = 0;
+		while (w < map->column)
+		{
+			if ((map->content[h][w] == 'C' || map->content[h][w] == 'E') &&
+				!visited[h][w])
+			{
+				free_visited(visited, map->line);
+				return (415);
+			}
+			w++;
+		}
+		h++;
+	}
+	return (0);
 }

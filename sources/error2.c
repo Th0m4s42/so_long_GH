@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:23:59 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 19:48:57 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/19 11:44:17 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	ft_compare_line(t_map *map, int lines)
 
 	error_code = 0;
 	i = 0;
-	ft_strlen(map->content[0]);
+	map->column = ft_strlen(map->content[0]);
 	while (i < lines)
 	{
-		if (ft_strlen(map->content[0]) != ft_strlen(map->content[i]))
+		if (map->column != (int)ft_strlen(map->content[i]))
 			error_code = 407;
 		i++;
 	}

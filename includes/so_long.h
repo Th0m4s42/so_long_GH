@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 15:31:57 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/19 11:56:12 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,24 @@ int		main(int argc, char **argv);
 
 ////////////ERROR//////////////////////////////////////////////////////////////
 
-int		check_error(int argc, char **argv, t_map *map);
-int		get_error_code(int argc, char **argv, t_map *map);
-int		ft_checkname(const char *str);
-int		check_map(t_map *map, char **argv);
-int		ft_compare_line(t_map *map, int lines);
-int		check_game_item(t_map *map);
-void	check_map_contain(t_map *map);
-int		check_map_unexpexted_contain(t_map *map);
-int		print_error(int error_code);
-int		check_wall(t_map *map);
-int		check_border(t_map *map);
-int		check_side(t_map *map);
-int		check_rechability(t_map *map);
+int			check_error(int argc, char **argv, t_map *map);
+int			get_error_code(int argc, char **argv, t_map *map);
+int			ft_checkname(const char *str);
+int			check_map(t_map *map, char **argv);
+int			ft_compare_line(t_map *map, int lines);
+int			check_game_item(t_map *map);
+void		check_map_contain(t_map *map);
+int			check_map_unexpexted_contain(t_map *map);
+int			print_error(int error_code);
+int			check_wall(t_map *map);
+int			check_border(t_map *map);
+int			check_side(t_map *map);
+int			check_rechability(t_map *map);
 t_player	*check_player_pos(t_map *map);
-bool	**init_visited(t_map *map);
-void	depth_first_search(char **map, int h, int w, int max_h, int max_w,
-		bool **visited);
+bool		**init_visited(t_map *map);
+void		depth_first_search(char **map, int h, int w, int max_h, int max_w,
+			bool **visited);
+int			check_visited(t_map *map, bool **visited);
 
 ////////////UTILS//////////////////////////////////////////////////////////////
 
