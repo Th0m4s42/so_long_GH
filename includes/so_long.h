@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/19 11:56:12 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/19 16:31:21 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ typedef struct	s_player
 	int	y;
 }				t_player;
 
+typedef struct	s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}				t_data;
+
 ////////////FONCTIONS//////////////////////////////////////////////////////////
 
 int		main(int argc, char **argv);
@@ -72,5 +78,9 @@ int			count_lines(char **map);
 void		free_tab(char **tab);
 t_player	*create_player(int x, int y);
 void		free_visited(bool **visited, int height);
+
+////////////GAMES//////////////////////////////////////////////////////////////
+
+void		start_game(t_map *map);
 
 #endif

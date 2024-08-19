@@ -1,7 +1,7 @@
 NAME := so_long
 CC := cc
-FLAGS := -Wall -Werror -Wextra -g
-#FLAGS := -g
+#FLAGS := -Wall -Werror -Wextra -g
+FLAGS := -g
 
 MLX_INCLUDES = -I/opt/X11/include -Iminilibx-linux
 MLX_FLAGS = -Lminilibx-linux -lmlx -L/usr/lib/X11 -lXext -lX11
@@ -26,6 +26,7 @@ SRCS := \
 	$(SRC_DIR)error3.c \
 	$(SRC_DIR)error4.c \
 	$(SRC_DIR)utils.c \
+	$(SRC_DIR)game.c \
 
 LIBFT_DIR := libft/
 LIBFT_LIB := libft/libft.a
