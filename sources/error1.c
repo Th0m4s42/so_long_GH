@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 19:32:38 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/19 11:07:27 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int	get_error_code(int argc, char **argv, t_map *map)
 
 	error_code = 0;
 	fd = open(argv[1], O_RDONLY);
+	close(fd);
 	if (argc != 2)
 		error_code = 300;
 	else if (fd == -1)
 		error_code = 404;
 	else
 	{
-		close(fd);
 		if (ft_checkname((const char *)argv[1]) == 22)
 			error_code = 406;
 		if (error_code == 0)

@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 19:59:55 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/19 11:40:52 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int		check_rechability(t_map *map)
 	pos = check_player_pos(map);
 	if (pos == NULL)
 		return (-1);
+	map->column = (ft_strlen(map->content[0]));
 	visited = init_visited(map);
 	if (visited == NULL)
 	{
 		free (pos);
 		return (-2);
 	}
-	map->column = (ft_strlen(map->content[0]) - 2);
 	depth_first_search(map->content, pos->y, pos->x, map->line, map->column,
 	visited);
 	while(h < map->line)
@@ -38,18 +38,17 @@ int		check_rechability(t_map *map)
 		while (w < map->column)
 		{
 			if ((map->content[h][w] == 'C' || map->content[h][w] == 'E') &&
-				!visited[h][w])
+				!visited[h][w] == 0)
 			{
 				free_visited(visited, map->line);
 				free(pos);
-				return (404);
+				return (415);
 			}
 			w++;
 		}
 		h++;
 	}
 	free_visited(visited, map->line);
-	free(pos);
 	return (0);
 }
 
