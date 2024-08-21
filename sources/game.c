@@ -6,29 +6,15 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/21 10:08:56 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/21 11:57:55 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-static int	handle_no_event(void *data)
-{
-	return (0);
-}
-
-static int	handle_keypress(int keysym, t_data *data)
-{
-	if(keysym == XK_Escape)
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	printf("Keypress: %d\n", keysym);
-	return (0);
-}
-
-
 void	start_game(t_map *map)
 {
-	t_data data;
+	t_game data;
 
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
@@ -46,3 +32,15 @@ void	start_game(t_map *map)
 	free(data.mlx_ptr);
 }
 
+int	handle_no_event(void *data)
+{
+	return (0);
+}
+
+int	handle_keypress(int keysym, t_game *data)
+{
+	if(keysym == XK_Escape)
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	printf("Keypress: %d\n", keysym);
+	return (0);
+}
