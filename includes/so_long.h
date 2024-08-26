@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/21 12:26:16 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/26 18:44:25 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ typedef struct	s_player
 	int	y;
 }				t_player;
 
+typedef	struct	s_image
+{
+	void	*adr;
+	int		x;
+	int		y;
+}				t_image;
+
 typedef struct	s_game
 {
 	void	*mlx_ptr;
@@ -50,14 +57,6 @@ typedef struct	s_game
 	t_image	wall;
 	t_image	ground;
 }				t_game;
-
-typedef	struct	s_image
-{
-	void	*adr;
-	int		x;
-	int		y;
-}				t_image;
-
 
 ////////////FONCTIONS//////////////////////////////////////////////////////////
 
@@ -97,5 +96,10 @@ void		free_visited(bool **visited, int height);
 void		start_game(t_map *map);
 int			handle_no_event(void *data);
 int			handle_keypress(int keysym, t_game *game);
+void		init_sprites(t_game *game);
+t_image		ft_new_sprite(void *mlx, char *path, t_game *game);
+void		draw_map(t_game *game, t_map *map);
+void		draw_sprites(t_game *game, t_map *map, int x, int y);
+
 
 #endif

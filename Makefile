@@ -27,6 +27,7 @@ SRCS := \
 	$(SRC_DIR)error4.c \
 	$(SRC_DIR)utils.c \
 	$(SRC_DIR)game.c \
+	$(SRC_DIR)graphism.c \
 
 LIBFT_DIR := libft/
 LIBFT_LIB := libft/libft.a
