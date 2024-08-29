@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:00:07 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/26 18:47:32 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/08/29 11:34:57 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	draw_map(t_game *game, t_map *map)
 	int	x;
 	int	y;
 
+	init_sprites(game);
 	y = 0;
 	while (y < map->line)
 	{
