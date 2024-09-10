@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/10 13:38:24 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/10 18:54:21 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void	start_game(t_map *map)
 {
 	t_game *game;
 
+	game = (t_game *)malloc(sizeof(t_game));
+	if (game == NULL)
+		return ;
 	game->mlx_ptr = mlx_init();
 	if (game->mlx_ptr == NULL)
 		return ;
@@ -29,13 +32,13 @@ void	start_game(t_map *map)
 	draw_map(game, map);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_keypress, game);
 	mlx_loop(game->mlx_ptr);
-	// mlx_destroy_image(data.mlx_ptr, &data.coll);
-	// mlx_destroy_image(data.mlx_ptr, &data.player);
-	// mlx_destroy_image(data.mlx_ptr, &data.ground);
-	// mlx_destroy_image(data.mlx_ptr, &data.exit);
-	// mlx_destroy_image(data.mlx_ptr, &data.wall);
-	// mlx_destroy_window(data.mlx_ptr, data.win_ptr);
-	// mlx_destroy_display(data.mlx_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->coll.adr);
+	mlx_destroy_image(game->mlx_ptr, game->player.adr);
+	mlx_destroy_image(game->mlx_ptr, game->ground.adr);
+	mlx_destroy_image(game->mlx_ptr, game->exit.adr);
+	mlx_destroy_image(game->mlx_ptr, game->wall.adr);
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	mlx_destroy_display(game->mlx_ptr);
 }
 
 int	handle_keypress(int keysym, t_game *game, t_map *map)
