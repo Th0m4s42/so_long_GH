@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/19 12:50:46 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/19 18:40:11 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int		check_rechability(t_map *map)
 		return (415);
 	}
 	free_visited(visited, map->line);
-	free(pos);
 	return (0);
 }
 

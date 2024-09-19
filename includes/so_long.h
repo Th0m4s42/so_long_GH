@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/07 18:58:00 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:25:05 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,14 @@ typedef	struct	s_image
 
 typedef struct	s_game
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_image	player;
-	t_image	coll;
-	t_image	exit;
-	t_image	wall;
-	t_image	ground;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_player	player_pos;
+	t_image		player;
+	t_image		coll;
+	t_image		exit;
+	t_image		wall;
+	t_image		ground;
 }				t_game;
 
 ////////////FONCTIONS//////////////////////////////////////////////////////////
@@ -64,7 +65,7 @@ int		main(int argc, char **argv);
 
 ////////////ERROR//////////////////////////////////////////////////////////////
 
-int			check_error(int argc, char **argv, t_map *map);
+void		check_error(int argc, char **argv, t_map *map);
 int			get_error_code(int argc, char **argv, t_map *map);
 int			ft_checkname(const char *str);
 int			check_map(t_map *map, char **argv);
@@ -72,7 +73,7 @@ int			ft_compare_line(t_map *map, int lines);
 int			check_game_item(t_map *map);
 void		check_map_contain(t_map *map);
 int			check_map_unexpexted_contain(t_map *map);
-int			print_error(int error_code);
+void		print_error(int error_code);
 int			check_wall(t_map *map);
 int			check_border(t_map *map);
 int			check_side(t_map *map);
@@ -94,7 +95,6 @@ void		free_visited(bool **visited, int height);
 ////////////GAMES//////////////////////////////////////////////////////////////
 
 void		start_game(t_map *map);
-int			handle_no_event(void *data);
 int			handle_keypress(int keysym, t_game *game, t_map *map);
 void		init_sprites(t_game *game);
 t_image		ft_new_sprite(void *mlx, char *path, t_game *game);

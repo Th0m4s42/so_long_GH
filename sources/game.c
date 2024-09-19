@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/10 18:54:21 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/19 17:43:45 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,20 @@ void	start_game(t_map *map)
 		return ;
 	game->mlx_ptr = mlx_init();
 	if (game->mlx_ptr == NULL)
+	{
+		free(game);
 		return ;
+	}
 	game->win_ptr = mlx_new_window(game->mlx_ptr, ((map->column - 1) * 32), (map->line * 32), "so_long");
 	if (game->win_ptr == NULL)
 	{
-		free(game->win_ptr);
+		free(game);
 		return ;
 	}
 	init_sprites(game);
 	draw_map(game, map);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_keypress, game);
+	mlx_hook(game->win_ptr, Expose, ExposureMask, draw_map, game);
 	mlx_loop(game->mlx_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->coll.adr);
 	mlx_destroy_image(game->mlx_ptr, game->player.adr);
@@ -43,15 +47,15 @@ void	start_game(t_map *map)
 
 int	handle_keypress(int keysym, t_game *game, t_map *map)
 {
-	if(keysym == XK_Escape)
+	if(keysym == XK_Escape || keysym == 113)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	if(keysym == XK_w || keysym == XK_Up)
+	if(keysym == 119 || keysym == 65362)
 		movement(game, game->player.x, game->player.y - 1, map);
-	if(keysym == XK_a || keysym == XK_Left)
+	if(keysym == 97 || keysym == 65361)
 		movement(game, game->player.x - 1, game->player.y, map);
-	if(keysym == XK_s || keysym == XK_Down)
+	if(keysym == 115 || keysym == 65364)
 		movement(game, game->player.x, game->player.y + 1, map);
-	if(keysym == XK_d || keysym == XK_Right)
+	if(keysym == 100 || keysym == 65363)
 		movement(game, game->player.x + 1, game->player.y, map);
 	printf("Keypress: %d\n", keysym);
 	return (0);
@@ -63,8 +67,8 @@ void	movement(t_game *game, int x, int y, t_map *map)
 	int	previous_y;
 	int	move;
 
-	previous_x = game->player.x;
-	previous_y = game->player.y;
+	previous_x = game->player_pos.x;
+	previous_y = game->player_pos.y;
 	move = 0;
 	// if (map->content[y][x] == 'E' && map->C == 0)
 	// victory
@@ -73,8 +77,8 @@ void	movement(t_game *game, int x, int y, t_map *map)
 		map->content[previous_y][previous_x] = '0';
 		if (map->content[y][x] == 'C')
 			map->C--;
-		game->player.x = x;
-		game->player.y = y;
+		game->player_pos.x = x;
+		game->player_pos.y = y;
 		map->content[y][x] = 'P';
 		move++;
 		ft_printf("movement: %d", move);

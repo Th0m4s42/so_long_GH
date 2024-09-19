@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:27:05 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/30 14:02:59 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:27:12 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int	main(int argc, char **argv)
 	map = malloc(sizeof(t_map));
 	if (map == NULL)
 		return (1);
-	error_code = check_error(argc, argv, map);
-	if (error_code > 406)
-		free_tab(map->content);
+	check_error(argc, argv, map);
 	if (error_code == 0)
 		start_game(map);
 }
