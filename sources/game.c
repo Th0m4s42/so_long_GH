@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/19 17:43:45 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/19 21:21:51 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	start_game(t_map *map)
 		free(game);
 		return ;
 	}
+	init_game(game, map);
 	init_sprites(game);
-	draw_map(game, map);
+	draw_map(game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_keypress, game);
-	mlx_hook(game->win_ptr, Expose, ExposureMask, draw_map, game);
 	mlx_loop(game->mlx_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->coll.adr);
 	mlx_destroy_image(game->mlx_ptr, game->player.adr);
@@ -81,7 +81,46 @@ void	movement(t_game *game, int x, int y, t_map *map)
 		game->player_pos.y = y;
 		map->content[y][x] = 'P';
 		move++;
-		ft_printf("movement: %d", move);
-		draw_map(game, map);
+		// ft_printf("movement: %d", move);
+		draw_map(game);
+	}
+}
+ 
+void	init_game(t_game *game, t_map *map)
+{
+	game->player.adr = NULL;
+	game->coll.adr = NULL;
+	game->exit.adr = NULL;
+	game->wall.adr = NULL;
+	game->ground.adr = NULL;
+	game->map.content = map->content;
+	game->map.line = map->line;
+	game->map.column = map->column;
+	game->map.P = map->P;
+	game->map.C = map->C;
+	game->map.E = map->E;
+	get_player_pos(game, map);
+}
+
+void	get_player_pos(t_game *game, t_map *map)
+{
+	int			h;
+	int			w;
+
+	h = 0;
+	while (map->content[h])
+	{
+		w = 0; 
+		while (map->content[h][w])
+		{
+			if (map->content[h][w] == 'P')
+			{
+				game->player_pos.y = h;
+				game->player_pos.x = w;
+				return ;
+			}
+			w++;
+		}
+		h++;
 	}
 }

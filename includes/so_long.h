@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/19 19:25:05 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/19 21:19:19 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct	s_game
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	t_map		map;
 	t_player	player_pos;
 	t_image		player;
 	t_image		coll;
@@ -96,10 +97,12 @@ void		free_visited(bool **visited, int height);
 
 void		start_game(t_map *map);
 int			handle_keypress(int keysym, t_game *game, t_map *map);
+void		init_game(t_game *game, t_map *map);
+void		get_player_pos(t_game *game, t_map *map);
 void		init_sprites(t_game *game);
 t_image		ft_new_sprite(void *mlx, char *path, t_game *game);
-void		draw_map(t_game *game, t_map *map);
-void		draw_sprites(t_game *game, t_map *map, int x, int y);
+void		draw_map(t_game *game);
+void		draw_sprites(t_game *game, int x, int y);
 void		movement(t_game *game, int x, int y, t_map *map);
 
 

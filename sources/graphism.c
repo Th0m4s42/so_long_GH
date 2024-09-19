@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:00:07 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/10 13:25:25 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/19 20:02:45 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,34 @@ t_image	ft_new_sprite(void *mlx, char *path, t_game *game)
 	return (sprite);
 }
 
-void	draw_map(t_game *game, t_map *map)
+void	draw_map(t_game *game)
 {
 	int	x;
 	int	y;
 	
 	y = 0;
-	while (y < map->line)
+	while (y < game->map.line)
 	{
 		x = 0;
-		while (x < map->column)
+		while (x < game->map.column)
 		{
-			draw_sprites(game, map, x, y);
+			draw_sprites(game, x, y);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	draw_sprites(t_game *game, t_map *map, int x, int y)
+void	draw_sprites(t_game *game, int x, int y)
 {
-	if (map->content[y][x] == '1')
+	if (game->map.content[y][x] == '1')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall.adr, x * game->wall.x, y * game->wall.y);
-	else if (map->content[y][x] == '0')
+	else if (game->map.content[y][x] == '0')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->ground.adr, x * game->ground.x, y * game->ground.y);
-	else if (map->content[y][x] == 'P')
+	else if (game->map.content[y][x] == 'P')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player.adr, x * game->player.x, y * game->player.y);
-	else if (map->content[y][x] == 'C')
+	else if (game->map.content[y][x] == 'C')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->coll.adr, x * game->coll.x, y * game->coll.y);
-	else if (map->content[y][x] == 'E')
+	else if (game->map.content[y][x] == 'E')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->exit.adr, x * game->exit.x, y * game->exit.y);
 }
