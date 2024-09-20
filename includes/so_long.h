@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 11:59:47 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 17:02:18 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,15 @@ void		free_visited(bool **visited, int height);
 ////////////GAMES//////////////////////////////////////////////////////////////
 
 void		start_game(t_map *map);
-int			handle_keypress(int keysym, t_game *game, t_map *map);
+int			handle_keypress(int keysym, t_game *game);
 void		init_game(t_game *game, t_map *map);
-void		get_player_pos(t_game *game, t_map *map);
+void		get_player_pos(t_game *game);
 void		init_sprites(t_game *game);
-t_image		ft_new_sprite(void *mlx, char *path, t_game *game);
+t_image		ft_new_sprite(void *mlx, char *path);
 void		draw_map(t_game *game);
 void		draw_sprites(t_game *game, int x, int y);
-void		movement(t_game *game, int x, int y, t_map *map);
-void		free_all(t_game *game, t_map *map);
+void		movement(t_game *game, int x, int y);
+void		free_all(t_game *game);
 void		destroy(t_game *game);
 
 

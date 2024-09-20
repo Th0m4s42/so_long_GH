@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:00:07 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 16:44:08 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 17:01:47 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	init_sprites(t_game *game)
 	void	*mlx;
 
 	mlx = game->mlx_ptr;
-	game->wall = ft_new_sprite(mlx, "resources/Textures/Grave.xpm", game);
-	game->ground = ft_new_sprite(mlx, "resources/Textures/ground.xpm", game);
-	game->coll = ft_new_sprite(mlx, "resources/Textures/Soul.xpm", game);
-	game->player = ft_new_sprite(mlx, "resources/Textures/Reaper.xpm", game);
-	game->exit = ft_new_sprite(mlx, "resources/Textures/Exit.xpm", game);
+	game->wall = ft_new_sprite(mlx, "resources/Textures/Grave.xpm");
+	game->ground = ft_new_sprite(mlx, "resources/Textures/ground.xpm");
+	game->coll = ft_new_sprite(mlx, "resources/Textures/Soul.xpm");
+	game->player = ft_new_sprite(mlx, "resources/Textures/Reaper.xpm");
+	game->exit = ft_new_sprite(mlx, "resources/Textures/Exit.xpm");
 }	
 
-t_image	ft_new_sprite(void *mlx, char *path, t_game *game)
+t_image	ft_new_sprite(void *mlx, char *path)
 {
 	t_image	sprite;
 

@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 16:46:01 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 16:58:20 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,25 @@ void	start_game(t_map *map)
 	mlx_loop(game->mlx_ptr);
 }
 
-int	handle_keypress(int keysym, t_game *game, t_map *map)
+int	handle_keypress(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape || keysym == 113)
 	{
-		free_all(game, map);
+		free_all(game);
 		exit (0);
 	}
 	if (keysym == 119 || keysym == 65362)
-		movement(game, game->player_pos.x, game->player_pos.y - 1, map);
+		movement(game, game->player_pos.x, game->player_pos.y - 1);
 	if (keysym == 97 || keysym == 65361)
-		movement(game, game->player_pos.x - 1, game->player_pos.y, map);
+		movement(game, game->player_pos.x - 1, game->player_pos.y);
 	if (keysym == 115 || keysym == 65364)
-		movement(game, game->player_pos.x, game->player_pos.y + 1, map);
+		movement(game, game->player_pos.x, game->player_pos.y + 1);
 	if (keysym == 100 || keysym == 65363)
-		movement(game, game->player_pos.x + 1, game->player_pos.y, map);
+		movement(game, game->player_pos.x + 1, game->player_pos.y);
 	return (0);
 }
 
-void	movement(t_game *game, int x, int y, t_map *map)
+void	movement(t_game *game, int x, int y)
 {
 	int			previous_x;
 	int			previous_y;
@@ -94,10 +94,10 @@ void	init_game(t_game *game, t_map *map)
 	game->map.P = map->P;
 	game->map.C = map->C;
 	game->map.E = map->E;
-	get_player_pos(game, map);
+	get_player_pos(game);
 }
 
-void	get_player_pos(t_game *game, t_map *map)
+void	get_player_pos(t_game *game)
 {
 	int			h;
 	int			w;
@@ -120,11 +120,10 @@ void	get_player_pos(t_game *game, t_map *map)
 	}
 }
 
-void	free_all(t_game *game, t_map *map)
+void	free_all(t_game *game)
 {
 	destroy(game);
-	free_tab(map->content);
-	free(map);
+	free_tab(game->map.content);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
