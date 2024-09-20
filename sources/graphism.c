@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:00:07 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 11:16:31 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 16:44:08 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_sprites(t_game *game)
 
 t_image	ft_new_sprite(void *mlx, char *path, t_game *game)
 {
-	t_image sprite;
+	t_image	sprite;
 
 	sprite.adr = mlx_xpm_file_to_image(mlx, path, &sprite.x, &sprite.y);
 	if (sprite.adr == NULL)
@@ -41,7 +41,7 @@ void	draw_map(t_game *game)
 {
 	int	x;
 	int	y;
-	
+
 	y = 0;
 	while (y < game->map.line)
 	{
@@ -58,13 +58,18 @@ void	draw_map(t_game *game)
 void	draw_sprites(t_game *game, int x, int y)
 {
 	if (game->map.content[y][x] == '1')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall.adr, x * game->wall.x, y * game->wall.y);
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->wall.adr, x * game->wall.x, y * game->wall.y);
 	else if (game->map.content[y][x] == '0')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->ground.adr, x * game->ground.x, y * game->ground.y);
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->ground.adr,
+			x * game->ground.x, y * game->ground.y);
 	else if (game->map.content[y][x] == 'P')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player.adr, x * game->player.x, y * game->player.y);
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player.adr,
+			x * game->player.x, y * game->player.y);
 	else if (game->map.content[y][x] == 'C')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->coll.adr, x * game->coll.x, y * game->coll.y);
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->coll.adr,
+			x * game->coll.x, y * game->coll.y);
 	else if (game->map.content[y][x] == 'E')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->exit.adr, x * game->exit.x, y * game->exit.y);
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->exit.adr,
+			x * game->exit.x, y * game->exit.y);
 }

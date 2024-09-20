@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 16:17:33 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 16:46:01 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	start_game(t_map *map)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = (t_game *)malloc(sizeof(t_game));
 	if (game == NULL)
@@ -25,7 +25,8 @@ void	start_game(t_map *map)
 		free(game);
 		return ;
 	}
-	game->win_ptr = mlx_new_window(game->mlx_ptr, ((map->column - 1) * 32), (map->line * 32), "so_long");
+	game->win_ptr = mlx_new_window(game->mlx_ptr, ((map->column - 1) * 32),
+			(map->line * 32), "so_long");
 	if (game->win_ptr == NULL)
 	{
 		free(game);
@@ -40,18 +41,18 @@ void	start_game(t_map *map)
 
 int	handle_keypress(int keysym, t_game *game, t_map *map)
 {
-	if(keysym == XK_Escape || keysym == 113)
+	if (keysym == XK_Escape || keysym == 113)
 	{
 		free_all(game, map);
 		exit (0);
 	}
-	if(keysym == 119 || keysym == 65362)
+	if (keysym == 119 || keysym == 65362)
 		movement(game, game->player_pos.x, game->player_pos.y - 1, map);
-	if(keysym == 97 || keysym == 65361)
+	if (keysym == 97 || keysym == 65361)
 		movement(game, game->player_pos.x - 1, game->player_pos.y, map);
-	if(keysym == 115 || keysym == 65364)
+	if (keysym == 115 || keysym == 65364)
 		movement(game, game->player_pos.x, game->player_pos.y + 1, map);
-	if(keysym == 100 || keysym == 65363)
+	if (keysym == 100 || keysym == 65363)
 		movement(game, game->player_pos.x + 1, game->player_pos.y, map);
 	return (0);
 }
@@ -79,7 +80,7 @@ void	movement(t_game *game, int x, int y, t_map *map)
 		draw_map(game);
 	}
 }
- 
+
 void	init_game(t_game *game, t_map *map)
 {
 	game->player.adr = NULL;
@@ -104,7 +105,7 @@ void	get_player_pos(t_game *game, t_map *map)
 	h = 0;
 	while (h < game->map.line)
 	{
-		w = 0; 
+		w = 0;
 		while (w < game->map.column)
 		{
 			if (game->map.content[h][w] == 'P')
