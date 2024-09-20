@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/19 21:21:51 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 11:20:27 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,10 @@ void	get_player_pos(t_game *game, t_map *map)
 	int			w;
 
 	h = 0;
-	while (map->content[h])
+	while (h < map->line)
 	{
 		w = 0; 
-		while (map->content[h][w])
+		while (w < map->column)
 		{
 			if (map->content[h][w] == 'P')
 			{

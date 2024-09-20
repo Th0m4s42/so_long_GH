@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 10:58:55 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 11:28:10 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ void	depth_first_search(t_map *map, int h, int w, bool **visited)
 	int	max_h;
 	int	max_w;
 
-	max_h = map->column;
-	max_w = map->line;
+	max_h = map->line;
+	max_w = map->column;
 	if (h < 0 || h >= max_h || w < 0 || w >= max_w)
 		return ;
 	if (map->content[h][w] == '1' || visited[h][w] == true)
