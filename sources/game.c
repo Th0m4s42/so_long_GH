@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 12:09:10 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 12:25:10 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@ void	start_game(t_map *map)
 	draw_map(game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_keypress, game);
 	mlx_loop(game->mlx_ptr);
-	free(game);
 }
 
 int	handle_keypress(int keysym, t_game *game, t_map *map)
 {
 	if(keysym == XK_Escape || keysym == 113)
 	{
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 		free_all(game, map);
 		exit (0);
 	}
