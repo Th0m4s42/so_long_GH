@@ -6,15 +6,15 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/19 21:10:07 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 10:58:55 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-int		check_rechability(t_map *map)
+int	check_rechability(t_map *map)
 {
-	bool 		**visited;
+	bool		**visited;
 	t_player	*pos;
 
 	pos = check_player_pos(map);
@@ -26,8 +26,7 @@ int		check_rechability(t_map *map)
 		free (pos);
 		return (-2);
 	}
-	depth_first_search(map->content, pos->y, pos->x, map->line, map->column,
-	visited);
+	depth_first_search(map, pos->y, pos->x, visited);
 	if (check_visited(map, visited) == 415)
 	{
 		free(pos);
@@ -50,7 +49,7 @@ t_player	*check_player_pos(t_map *map)
 		return (NULL);
 	while (map->content[h])
 	{
-		w = 0; 
+		w = 0;
 		while (map->content[h][w])
 		{
 			if (map->content[h][w] == 'P')
@@ -96,18 +95,22 @@ bool	**init_visited(t_map *map)
 	return (visited);
 }
 
-void	depth_first_search(char **map, int h, int w, int max_h, int max_w,
-bool **visited)
+void	depth_first_search(t_map *map, int h, int w, bool **visited)
 {
+	int	max_h;
+	int	max_w;
+
+	max_h = map->column;
+	max_w = map->line;
 	if (h < 0 || h >= max_h || w < 0 || w >= max_w)
 		return ;
-	if (map[h][w] == '1' || visited[h][w] == true)
+	if (map->content[h][w] == '1' || visited[h][w] == true)
 		return ;
 	visited[h][w] = true;
-	depth_first_search(map, h - 1, w, max_h, max_w, visited);
-	depth_first_search(map, h + 1, w, max_h, max_w, visited);
-	depth_first_search(map, h, w - 1, max_h, max_w, visited);
-	depth_first_search(map, h, w + 1, max_h, max_w, visited);
+	depth_first_search(map, h - 1, w, visited);
+	depth_first_search(map, h + 1, w, visited);
+	depth_first_search(map, h, w - 1, visited);
+	depth_first_search(map, h, w + 1, visited);
 }
 
 int	check_visited(t_map *map, bool **visited)
@@ -116,7 +119,7 @@ int	check_visited(t_map *map, bool **visited)
 	int	w;
 
 	h = 0;
-		while(h < map->line)
+	while (h < map->line)
 	{
 		w = 0;
 		while (w < map->column)

@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:23:59 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/29 11:42:52 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 10:47:16 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_compare_line(t_map *map, int lines)
 	return (error_code);
 }
 
-int     check_game_item(t_map *map)
+int	check_game_item(t_map *map)
 {
 	int	error_code;
 
@@ -118,9 +118,9 @@ int	check_map_unexpexted_contain(t_map *map)
 				map->content[h][w] != 'C' && map->content[h][w] != '1' &&
 				map->content[h][w] != '0' && map->content[h][w] != '\n' &&
 				map->content[h][w])
-				{
+			{
 				error_code = 414;
-				}
+			}
 			w++;
 		}
 		h++;

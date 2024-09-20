@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/08/16 15:35:17 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 10:45:58 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_map(t_map *map)
 	map->E = 0;
 }
 
-int		count_lines(char **map)
+int	count_lines(char **map)
 {
 	int		fd;
 	int		nb;
@@ -74,9 +74,9 @@ t_player	*create_player(int x, int y)
 
 void	free_visited(bool **visited, int height)
 {
-	int i;
+	int	i;
 
-	i= 0;
+	i = 0;
 	while (i < height)
 	{
 		free(visited[i]);
