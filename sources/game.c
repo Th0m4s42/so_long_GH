@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 16:12:02 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 16:17:33 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	handle_keypress(int keysym, t_game *game, t_map *map)
 		movement(game, game->player_pos.x, game->player_pos.y + 1, map);
 	if(keysym == 100 || keysym == 65363)
 		movement(game, game->player_pos.x + 1, game->player_pos.y, map);
-	printf("Keypress: %d\n", keysym);
 	return (0);
 }
 
@@ -76,7 +75,7 @@ void	movement(t_game *game, int x, int y, t_map *map)
 		game->player_pos.y = y;
 		game->map.content[y][x] = 'P';
 		move++;
-		// ft_printf("movement: %d", move);
+		ft_printf("movement: %d\n", move);
 		draw_map(game);
 	}
 }
