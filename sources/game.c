@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 13:29:52 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 16:12:02 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,36 +46,35 @@ int	handle_keypress(int keysym, t_game *game, t_map *map)
 		exit (0);
 	}
 	if(keysym == 119 || keysym == 65362)
-		movement(game, game->player.x, game->player.y - 1, map);
+		movement(game, game->player_pos.x, game->player_pos.y - 1, map);
 	if(keysym == 97 || keysym == 65361)
-		movement(game, game->player.x - 1, game->player.y, map);
+		movement(game, game->player_pos.x - 1, game->player_pos.y, map);
 	if(keysym == 115 || keysym == 65364)
-		movement(game, game->player.x, game->player.y + 1, map);
+		movement(game, game->player_pos.x, game->player_pos.y + 1, map);
 	if(keysym == 100 || keysym == 65363)
-		movement(game, game->player.x + 1, game->player.y, map);
+		movement(game, game->player_pos.x + 1, game->player_pos.y, map);
 	printf("Keypress: %d\n", keysym);
 	return (0);
 }
 
 void	movement(t_game *game, int x, int y, t_map *map)
 {
-	int	previous_x;
-	int	previous_y;
-	int	move;
+	int			previous_x;
+	int			previous_y;
+	static int	move = 0;
 
 	previous_x = game->player_pos.x;
 	previous_y = game->player_pos.y;
-	move = 0;
 	// if (map->content[y][x] == 'E' && map->C == 0)
 	// victory
-	if (map->content[y][x] == '0' || map->content[y][x] == 'C')
+	if (game->map.content[y][x] == '0' || game->map.content[y][x] == 'C')
 	{
-		map->content[previous_y][previous_x] = '0';
-		if (map->content[y][x] == 'C')
-			map->C--;
+		game->map.content[previous_y][previous_x] = '0';
+		if (game->map.content[y][x] == 'C')
+			game->map.C--;
 		game->player_pos.x = x;
 		game->player_pos.y = y;
-		map->content[y][x] = 'P';
+		game->map.content[y][x] = 'P';
 		move++;
 		// ft_printf("movement: %d", move);
 		draw_map(game);
@@ -104,12 +103,12 @@ void	get_player_pos(t_game *game, t_map *map)
 	int			w;
 
 	h = 0;
-	while (h < map->line)
+	while (h < game->map.line)
 	{
 		w = 0; 
-		while (w < map->column)
+		while (w < game->map.column)
 		{
-			if (map->content[h][w] == 'P')
+			if (game->map.content[h][w] == 'P')
 			{
 				game->player_pos.y = h;
 				game->player_pos.x = w;
