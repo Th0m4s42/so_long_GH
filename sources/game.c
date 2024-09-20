@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 17:21:30 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 17:59:44 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	start_game(t_map *map)
 	init_sprites(game);
 	draw_map(game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_keypress, game);
+	mlx_hook(game->win_ptr, 17, 1L << 19, &free_all, game);
 	mlx_loop(game->mlx_ptr);
 }
 
@@ -61,12 +62,16 @@ void	movement(t_game *game, int x, int y)
 {
 	int			previous_x;
 	int			previous_y;
-	static int	move = 0;
+	static long	move = 0;
 
 	previous_x = game->player_pos.x;
 	previous_y = game->player_pos.y;
-	// if (map->content[y][x] == 'E' && map->C == 0)
-	// victory
+	if (game->map.content[y][x] == 'E' && game->map.C == 0)
+	{
+		move++;
+		ft_printf("YOU WIN WITH %d MOVEMENT", move);
+		victory(game);
+	}
 	if (game->map.content[y][x] == '0' || game->map.content[y][x] == 'C')
 	{
 		game->map.content[previous_y][previous_x] = '0';
@@ -120,7 +125,7 @@ void	get_player_pos(t_game *game)
 	}
 }
 
-void	free_all(t_game *game)
+int	free_all(t_game *game)
 {
 	destroy(game);
 	free_tab(game->map.content);
@@ -128,6 +133,7 @@ void	free_all(t_game *game)
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	free(game);
+	return(0);
 }
 
 void	destroy(t_game *game)
@@ -137,4 +143,10 @@ void	destroy(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->ground.adr);
 	mlx_destroy_image(game->mlx_ptr, game->exit.adr);
 	mlx_destroy_image(game->mlx_ptr, game->wall.adr);
+}
+
+void	victory(t_game *game)
+{
+	free_all(game);
+	ft_printf("CONGRATULATIONS!\n");
 }

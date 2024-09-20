@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:23:59 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 10:47:16 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 17:54:31 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,9 @@ void	check_map_contain(t_map *map)
 			else if (map->content[h][w] == 'E')
 				map->E++;
 			else if (map->content[h][w] == 'C')
+			{
 				map->C++;
+			}
 			w++;
 		}
 		h++;

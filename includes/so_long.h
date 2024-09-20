@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 17:21:45 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 18:00:04 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ t_image		ft_new_sprite(void *mlx, char *path);
 void		draw_map(t_game *game);
 void		draw_sprites(t_game *game, int x, int y);
 void		movement(t_game *game, int x, int y);
-void		free_all(t_game *game);
+int			free_all(t_game *game);
 void		destroy(t_game *game);
-
+void		victory(t_game *game);
 
 #endif

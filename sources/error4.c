@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:12:54 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 17:13:22 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 17:52:48 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,6 @@ void	depth_first_search(t_map *map, int h, int w, bool **visited)
 		|| visited[h][w] == true)
 		return ;
 	visited[h][w] = true;
-	if (map->content[h][w] == 'C')
-		map->C--;
 	depth_first_search(map, h - 1, w, visited);
 	depth_first_search(map, h + 1, w, visited);
 	depth_first_search(map, h, w - 1, visited);
@@ -127,7 +125,7 @@ int	check_visited(t_map *map, bool **visited)
 		w = 0;
 		while (w < map->column)
 		{
-			if ((map->content[h][w] == 'C') &&
+			if (map->content[h][w] == 'C' &&
 				!visited[h][w])
 			{
 				free_visited(visited, map->line);
