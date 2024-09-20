@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maja <maja@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 10:46:28 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 19:32:10 by maja             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ void	check_error(int argc, char **argv, t_map *map)
 	error_code = 0;
 	error_code = get_error_code(argc, argv, map);
 	print_error(error_code);
-	if (error_code > 406)
+	if (error_code < 407 && error_code != 0)
+	{
+		free(map);
+		exit (0);
+	}
+	if (error_code > 0)
 	{
 		free_tab(map->content);
 		free(map);
@@ -33,11 +38,15 @@ int	get_error_code(int argc, char **argv, t_map *map)
 	int	fd;
 
 	error_code = 0;
-	fd = open(argv[1], O_RDONLY);
-	close(fd);
 	if (argc != 2)
-		error_code = 300;
-	else if (fd == -1)
+		return (300);
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		return (404);
+	close(fd);
+
+
+	if (fd == -1)
 		error_code = 404;
 	else
 	{
@@ -92,7 +101,7 @@ void	print_error(int error_code)
 	else if (error_code == 410)
 		ft_putendl_fd("ERROR_NO_EXIT\n", 2);
 	else if (error_code == 411)
-		ft_putendl_fd("ERROR_TOO_MUCH EXIT\n", 2);
+		ft_putendl_fd("ERROR_TOO_MUCH_EXIT\n", 2);
 	else if (error_code == 412)
 		ft_putendl_fd("ERROR_NO_COLLECTIBLE\n", 2);
 	else if (error_code == 413)
