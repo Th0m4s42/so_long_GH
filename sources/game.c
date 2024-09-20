@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 11:20:27 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 12:09:10 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,17 @@ void	start_game(t_map *map)
 	draw_map(game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_keypress, game);
 	mlx_loop(game->mlx_ptr);
-	mlx_destroy_image(game->mlx_ptr, game->coll.adr);
-	mlx_destroy_image(game->mlx_ptr, game->player.adr);
-	mlx_destroy_image(game->mlx_ptr, game->ground.adr);
-	mlx_destroy_image(game->mlx_ptr, game->exit.adr);
-	mlx_destroy_image(game->mlx_ptr, game->wall.adr);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr);
+	free(game);
 }
 
 int	handle_keypress(int keysym, t_game *game, t_map *map)
 {
 	if(keysym == XK_Escape || keysym == 113)
+	{
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		free_all(game, map);
+		exit (0);
+	}
 	if(keysym == 119 || keysym == 65362)
 		movement(game, game->player.x, game->player.y - 1, map);
 	if(keysym == 97 || keysym == 65361)
@@ -123,4 +121,25 @@ void	get_player_pos(t_game *game, t_map *map)
 		}
 		h++;
 	}
+}
+
+void	free_all(t_game *game, t_map *map)
+{
+	destroy(game);
+	free_tab(map->content);
+	free(map);
+	free_tab(game->map.content);
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
+	free(game);
+}
+
+void	destroy(t_game *game)
+{
+	mlx_destroy_image(game->mlx_ptr, game->coll.adr);
+	mlx_destroy_image(game->mlx_ptr, game->player.adr);
+	mlx_destroy_image(game->mlx_ptr, game->ground.adr);
+	mlx_destroy_image(game->mlx_ptr, game->exit.adr);
+	mlx_destroy_image(game->mlx_ptr, game->wall.adr);
 }
