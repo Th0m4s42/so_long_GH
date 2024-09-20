@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 10:45:58 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 13:16:55 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	free_tab(char **tab)
 	int	i;
 
 	i = 0;
+	if (tab == NULL)
+		return ;
 	while (tab[i])
 	{
 		free(tab[i]);

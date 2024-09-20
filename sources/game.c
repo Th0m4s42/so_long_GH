@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 12:25:10 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/20 13:13:58 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ void	free_all(t_game *game, t_map *map)
 	destroy(game);
 	free_tab(map->content);
 	free(map);
-	free_tab(game->map.content);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
