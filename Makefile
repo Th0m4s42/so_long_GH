@@ -1,5 +1,5 @@
 NAME := so_long
-CC := clang-14
+CC := cc
 FLAGS := -Wall -Werror -Wextra -g
 #FLAGS := -g
 

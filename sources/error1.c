@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maja <maja@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:40:04 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 19:32:10 by maja             ###   ########.fr       */
+/*   Updated: 2024/09/21 09:07:00 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,16 @@ int	get_error_code(int argc, char **argv, t_map *map)
 	if (fd == -1)
 		return (404);
 	close(fd);
-
-
-	if (fd == -1)
-		error_code = 404;
-	else
-	{
-		if (ft_checkname((const char *)argv[1]) == 22)
-			error_code = 406;
-		if (error_code == 0)
-			error_code = check_map(map, argv);
-		if (error_code == 0)
-			error_code = check_game_item(map);
-		if (error_code == 0)
-			error_code = check_wall(map);
-		if (error_code == 0)
-			error_code = check_rechability(map);
-	}
+	if (ft_checkname((const char *)argv[1]) == 22)
+		error_code = 406;
+	if (error_code == 0)
+		error_code = check_map(map, argv);
+	if (error_code == 0)
+		error_code = check_game_item(map);
+	if (error_code == 0)
+		error_code = check_wall(map);
+	if (error_code == 0)
+		error_code = check_rechability(map);
 	return (error_code);
 }
 

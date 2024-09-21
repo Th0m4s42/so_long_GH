@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maja <maja@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 19:33:59 by maja             ###   ########.fr       */
+/*   Updated: 2024/09/21 09:04:12 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	movement(t_game *game, int x, int y)
 	if (game->map.content[y][x] == 'E' && game->map.C == 0)
 	{
 		move++;
-		ft_printf("YOU WIN WITH %d MOVEMENT", move);
+		ft_printf("YOU WIN WITH %d MOVEMENT\n", move);
 		victory(game);
 	}
-	if (game->map.content[y][x] == '0' || game->map.content[y][x] == 'C')
+	else if (game->map.content[y][x] == '0' || game->map.content[y][x] == 'C')
 	{
 		game->map.content[previous_y][previous_x] = '0';
 		if (game->map.content[y][x] == 'C')
@@ -134,7 +134,8 @@ int	free_all(t_game *game)
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	free(game);
-	return(0);
+	exit(EXIT_SUCCESS);
+	return (0);
 }
 
 void	destroy(t_game *game)
