@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/21 09:04:12 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/21 09:16:44 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,6 @@ void	destroy(t_game *game)
 
 void	victory(t_game *game)
 {
-	free_all(game);
 	ft_printf("CONGRATULATIONS!\n");
+	free_all(game);
 }
