@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:29:26 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 13:16:55 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/21 09:55:50 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	init_map(t_map *map)
 	map->content = NULL;
 	map->line = 0;
 	map->column = 0;
-	map->P = 0;
-	map->C = 0;
-	map->E = 0;
+	map->p = 0;
+	map->c = 0;
+	map->e = 0;
 }
 
 int	count_lines(char **map)
@@ -85,4 +85,19 @@ void	free_visited(bool **visited, int height)
 		i++;
 	}
 	free(visited);
+}
+
+void	check_screen(t_game *game)
+{
+	int	width;
+	int	height;
+
+	width = 0;
+	height = 0;
+	mlx_get_screen_size(game->mlx_ptr, &width, &height);
+	if (width > (game->map.column * 32) || height > ((game->map.line - 1) * 32))
+	{
+		ft_putendl_fd("SCREEN TOO SMALL, SORRY!\n", 2);
+		free_all(game);
+	}
 }

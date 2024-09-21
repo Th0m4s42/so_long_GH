@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:23:59 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 17:54:31 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/21 09:48:17 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ int	check_game_item(t_map *map)
 
 	error_code = 0;
 	check_map_contain(map);
-	if (map->P == 0)
+	if (map->p == 0)
 		error_code = 408;
-	else if (map->P > 1)
+	else if (map->p > 1)
 		error_code = 409;
-	else if (map->E == 0)
+	else if (map->e == 0)
 		error_code = 410;
-	else if (map->E > 1)
+	else if (map->e > 1)
 		error_code = 411;
-	else if (map->C == 0)
+	else if (map->c == 0)
 		error_code = 412;
 	else if (error_code == 0)
 		error_code = check_map_unexpexted_contain(map);
@@ -90,12 +90,12 @@ void	check_map_contain(t_map *map)
 		while (map->content[h][w])
 		{
 			if (map->content[h][w] == 'P')
-				map->P++;
+				map->p++;
 			else if (map->content[h][w] == 'E')
-				map->E++;
+				map->e++;
 			else if (map->content[h][w] == 'C')
 			{
-				map->C++;
+				map->c++;
 			}
 			w++;
 		}

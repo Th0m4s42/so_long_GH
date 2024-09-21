@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/21 09:16:44 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/21 09:49:39 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	movement(t_game *game, int x, int y)
 
 	previous_x = game->player_pos.x;
 	previous_y = game->player_pos.y;
-	if (game->map.content[y][x] == 'E' && game->map.C == 0)
+	if (game->map.content[y][x] == 'E' && game->map.c == 0)
 	{
 		move++;
 		ft_printf("YOU WIN WITH %d MOVEMENT\n", move);
@@ -76,7 +76,7 @@ void	movement(t_game *game, int x, int y)
 	{
 		game->map.content[previous_y][previous_x] = '0';
 		if (game->map.content[y][x] == 'C')
-			game->map.C--;
+			game->map.c--;
 		game->player_pos.x = x;
 		game->player_pos.y = y;
 		game->map.content[y][x] = 'P';
@@ -96,9 +96,9 @@ void	init_game(t_game *game, t_map *map)
 	game->map.content = map->content;
 	game->map.line = map->line;
 	game->map.column = map->column;
-	game->map.P = map->P;
-	game->map.C = map->C;
-	game->map.E = map->E;
+	game->map.p = map->p;
+	game->map.c = map->c;
+	game->map.e = map->e;
 	free(map);
 	get_player_pos(game);
 }

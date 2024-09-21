@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maja <maja@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:27:46 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 19:32:59 by maja             ###   ########.fr       */
+/*   Updated: 2024/09/21 09:46:27 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define BUFFER_SIZE 1024
 
 # include <stdbool.h>
-# include <limits.h>
 # include "../minilibx-linux/mlx_int.h"
 # include "../minilibx-linux/mlx.h"
 # include "../libft/includes/libft.h"
@@ -24,30 +22,30 @@
 
 ////////////STRUCTURES/////////////////////////////////////////////////////////
 
-typedef struct 	s_map
+typedef struct s_map
 {
 	char	**content;
 	int		line;
 	int		column;
-	int		P;
-	int		C;
-	int		E;
+	int		p;
+	int		c;
+	int		e;
 }				t_map;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	int	x;
 	int	y;
 }				t_player;
 
-typedef	struct	s_image
+typedef struct s_image
 {
 	void	*adr;
 	int		x;
 	int		y;
 }				t_image;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -62,7 +60,7 @@ typedef struct	s_game
 
 ////////////FONCTIONS//////////////////////////////////////////////////////////
 
-int		main(int argc, char **argv);
+int			main(int argc, char **argv);
 
 ////////////ERROR//////////////////////////////////////////////////////////////
 
