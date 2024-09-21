@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:33:27 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/21 09:49:39 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/21 10:03:00 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	movement(t_game *game, int x, int y)
 	if (game->map.content[y][x] == 'E' && game->map.c == 0)
 	{
 		move++;
-		ft_printf("YOU WIN WITH %d MOVEMENT\n", move);
+		ft_printf("YOU WIN WITH %d MOVEMENTS\n", move);
 		victory(game);
 	}
 	else if (game->map.content[y][x] == '0' || game->map.content[y][x] == 'C')
@@ -124,31 +124,4 @@ void	get_player_pos(t_game *game)
 		}
 		h++;
 	}
-}
-
-int	free_all(t_game *game)
-{
-	destroy(game);
-	free_tab(game->map.content);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr);
-	free(game->mlx_ptr);
-	free(game);
-	exit(EXIT_SUCCESS);
-	return (0);
-}
-
-void	destroy(t_game *game)
-{
-	mlx_destroy_image(game->mlx_ptr, game->coll.adr);
-	mlx_destroy_image(game->mlx_ptr, game->player.adr);
-	mlx_destroy_image(game->mlx_ptr, game->ground.adr);
-	mlx_destroy_image(game->mlx_ptr, game->exit.adr);
-	mlx_destroy_image(game->mlx_ptr, game->wall.adr);
-}
-
-void	victory(t_game *game)
-{
-	ft_printf("CONGRATULATIONS!\n");
-	free_all(game);
 }

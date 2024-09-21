@@ -6,7 +6,7 @@
 /*   By: thbasse <thbasse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:38:21 by thbasse           #+#    #+#             */
-/*   Updated: 2024/09/20 10:45:15 by thbasse          ###   ########.fr       */
+/*   Updated: 2024/09/21 10:04:00 by thbasse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,19 @@ int	check_side(t_map *map)
 		h++;
 	}
 	return (0);
+}
+
+void	check_screen(t_game *game)
+{
+	int	width;
+	int	height;
+
+	width = 0;
+	height = 0;
+	mlx_get_screen_size(game->mlx_ptr, &width, &height);
+	if (width > (game->map.column * 32) || height > ((game->map.line - 1) * 32))
+	{
+		ft_putendl_fd("SCREEN TOO SMALL, SORRY!\n", 2);
+		free_all(game);
+	}
 }
